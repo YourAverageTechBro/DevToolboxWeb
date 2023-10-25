@@ -18,7 +18,7 @@ export default function JsonValidatorComponent({
   const [output, setOutput] = useState("");
   const debouncedOutput = useDebounce(output, 1000);
   useEffect(() => {
-    if (debouncedOutput) {
+    if (debouncedOutput && debouncedOutput !== initialInput) {
       void saveHistory({
         user,
         isProUser,
