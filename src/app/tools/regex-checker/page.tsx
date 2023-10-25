@@ -1,4 +1,4 @@
-import RegexCheckerComponent from "@/app/regex-checker/RegexCheckerComponent";
+import RegexCheckerComponent from "@/app/tools/regex-checker/RegexCheckerComponent";
 
 const RegexCheckerPage = () => <RegexCheckerComponent />;
 export default RegexCheckerPage;
