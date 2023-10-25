@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import Selector from "@/app/components/common/Selector";
 import ReadOnlyTextArea from "@/app/components/common/ReadOnlyTextArea";
+import { saveHistory } from "@/utils/clientUtils";
+import { User } from "@clerk/backend";
+import { ToolType } from "@prisma/client";
 
 enum Option {
   encode = "encode",
@@ -20,7 +23,13 @@ const options = [
   },
 ];
 
-export default function Bas64EncoderComponent() {
+export default function Bas64EncoderComponent({
+  user,
+  isProUser,
+}: {
+  user: User | null;
+  isProUser: boolean;
+}) {
   const [input, setInput] = useState("hello world");
   const [output, setOutput] = useState("");
   const [currentOption, setCurrentOption] = useState<Option>(options[0].value);
@@ -37,9 +46,33 @@ export default function Bas64EncoderComponent() {
   useEffect(() => {
     try {
       if (currentOption === Option.decode) {
-        setOutput(decodeBase64(input));
+        const newOutput = decodeBase64(input);
+        setOutput(newOutput);
+        void saveHistory({
+          user,
+          isProUser,
+          toolType: ToolType.Base64Encoder,
+          onError: () => {},
+          metadata: {
+            input,
+            output: newOutput,
+            currentOption,
+          },
+        });
       } else if (currentOption === Option.encode) {
-        setOutput(encodeBase64(input));
+        const newOutput = encodeBase64(input);
+        setOutput(newOutput);
+        void saveHistory({
+          user,
+          isProUser,
+          toolType: ToolType.Base64Encoder,
+          onError: () => {},
+          metadata: {
+            input,
+            output: newOutput,
+            currentOption,
+          },
+        });
       }
     } catch (e) {
       setOutput(
@@ -48,7 +81,7 @@ export default function Bas64EncoderComponent() {
         } string`
       );
     }
-  }, [currentOption, input]);
+  }, [currentOption, input, isProUser, user]);
 
   // Example usage
   return (

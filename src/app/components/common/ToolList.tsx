@@ -64,7 +64,7 @@ export default function ToolList() {
       <SignedIn>
         <div className={"px-2 my-4 flex justify-between w-full"}>
           <UserButton afterSignOutUrl="/tools/json-validator" />
-          <Button intent={"secondary"} href={"/history"}>
+          <Button intent={"secondary"} href={"/tools/history"}>
             View History
           </Button>
         </div>
