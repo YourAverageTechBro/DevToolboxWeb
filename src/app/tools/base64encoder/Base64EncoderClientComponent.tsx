@@ -81,7 +81,7 @@ export default function Bas64EncoderComponent({
         } string`
       );
     }
-  }, [currentOption, input]);
+  }, [currentOption, input, isProUser, user]);
 
   // Example usage
   return (
