@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import Selector from "@/app/components/common/Selector";
 import ReadOnlyTextArea from "@/app/components/common/ReadOnlyTextArea";
-import { saveHistory } from "@/utils/clientUtils";
 import { User } from "@clerk/backend";
+import useDebounce from "@/app/hooks/useDebounce";
+import { saveHistory } from "@/utils/clientUtils";
 import { ToolType } from "@prisma/client";
 
 enum Option {
@@ -33,6 +34,23 @@ export default function Bas64EncoderComponent({
   const [input, setInput] = useState("hello world");
   const [output, setOutput] = useState("");
   const [currentOption, setCurrentOption] = useState<Option>(options[0].value);
+  const debouncedOutput = useDebounce<string>(output, 1000);
+
+  useEffect(() => {
+    if (debouncedOutput && debouncedOutput !== "aGVsbG8gd29ybGQ=") {
+      void saveHistory({
+        user,
+        isProUser,
+        toolType: ToolType.Base64Encoder,
+        onError: () => {},
+        metadata: {
+          input,
+          output,
+          currentOption,
+        },
+      });
+    }
+  }, [debouncedOutput]);
   // Encode a string to Base64
   const encodeBase64 = (inputString: string) =>
     // Use the btoa function to encode the string to Base64
@@ -46,33 +64,9 @@ export default function Bas64EncoderComponent({
   useEffect(() => {
     try {
       if (currentOption === Option.decode) {
-        const newOutput = decodeBase64(input);
-        setOutput(newOutput);
-        void saveHistory({
-          user,
-          isProUser,
-          toolType: ToolType.Base64Encoder,
-          onError: () => {},
-          metadata: {
-            input,
-            output: newOutput,
-            currentOption,
-          },
-        });
+        setOutput(decodeBase64(input));
       } else if (currentOption === Option.encode) {
-        const newOutput = encodeBase64(input);
-        setOutput(newOutput);
-        void saveHistory({
-          user,
-          isProUser,
-          toolType: ToolType.Base64Encoder,
-          onError: () => {},
-          metadata: {
-            input,
-            output: newOutput,
-            currentOption,
-          },
-        });
+        setOutput(encodeBase64(input));
       }
     } catch (e) {
       setOutput(
