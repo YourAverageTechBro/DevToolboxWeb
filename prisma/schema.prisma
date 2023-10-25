@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model History {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  toolType  ToolType
+  metadata  Json
+  userId    String
+}
+
+model Subscriptions {
+  stripeCustomerId String @id
+  clerkUserId      String
+}
+
+enum ToolType {
+  Base64Encoder
+  CharacterAndWordCounter
+  ColorConverter
+  DiffViewer
+  HashGenerator
+  JsonValidator
+  LineSortAndDedupe
+  RegexChecker
+  StringConverter
+  UnixTimeConverter
+  UrlParser
+}
