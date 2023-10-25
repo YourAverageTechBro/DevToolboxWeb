@@ -31,13 +31,13 @@ export default function Bas64EncoderComponent({
   user: User | null;
   isProUser: boolean;
 }) {
-  const [input, setInput] = useState("hello world");
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [currentOption, setCurrentOption] = useState<Option>(options[0].value);
   const debouncedOutput = useDebounce<string>(output, 1000);
 
   useEffect(() => {
-    if (debouncedOutput && debouncedOutput !== "aGVsbG8gd29ybGQ=") {
+    if (debouncedOutput) {
       void saveHistory({
         user,
         isProUser,
@@ -45,8 +45,6 @@ export default function Bas64EncoderComponent({
         onError: () => {},
         metadata: {
           input,
-          output,
-          currentOption,
         },
       });
     }

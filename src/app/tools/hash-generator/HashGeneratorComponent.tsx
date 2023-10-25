@@ -1,10 +1,21 @@
 "use client";
 
 import * as CryptoJS from "crypto-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextArea from "@/app/components/common/TextArea";
+import { User } from "@clerk/backend";
+import useDebounce from "@/app/hooks/useDebounce";
+import { ToolType } from "@prisma/client";
+import { saveHistory } from "@/utils/clientUtils";
 
-export default function HashGeneratorComponent() {
+export default function HashGeneratorComponent({
+  user,
+  isProUser,
+}: {
+  user: User | null;
+  isProUser: boolean;
+}) {
+  const [input, setInput] = useState("");
   const [md5Hash, setMd5Hash] = useState("");
   const [sha1Hash, setSha1Hash] = useState("");
   const [sha224Hash, setSha224Hash] = useState("");
@@ -12,6 +23,22 @@ export default function HashGeneratorComponent() {
   const [sha384Hash, setSha384Hash] = useState("");
   const [sha512Hash, setSha512Hash] = useState("");
   const [keccak256Hash, setKeccak256Hash] = useState("");
+
+  const debouncedInput = useDebounce<string>(input, 1000);
+
+  useEffect(() => {
+    if (debouncedInput) {
+      void saveHistory({
+        user,
+        isProUser,
+        toolType: ToolType.HashGenerator,
+        onError: () => {},
+        metadata: {
+          debouncedInput,
+        },
+      });
+    }
+  }, [debouncedInput]);
 
   const generateMd5Hash = (input: string) =>
     setMd5Hash(CryptoJS.MD5(input).toString());
@@ -58,7 +85,10 @@ export default function HashGeneratorComponent() {
     <div className="w-full h-full flex gap-4">
       <TextArea
         initialInput="hello world"
-        onInputChange={(input) => generateHashes(input)}
+        onInputChange={(input) => {
+          setInput(input);
+          generateHashes(input);
+        }}
       />
 
       <div className="w-full h-full flex flex-col gap-4">

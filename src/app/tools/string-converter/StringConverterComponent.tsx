@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Selector from "@/app/components/common/Selector";
 import TextArea from "@/app/components/common/TextArea";
+import { User } from "@clerk/backend";
+import useDebounce from "@/app/hooks/useDebounce";
+import { saveHistory } from "@/utils/clientUtils";
+import { ToolType } from "@prisma/client";
 
 const convertToSnakeCase = (input: string): string =>
   input
@@ -77,10 +81,33 @@ const options = [
     value: TransformationOption.constantCase,
   },
 ];
-export default function StringConverterComponent() {
+export default function StringConverterComponent({
+  user,
+  isProUser,
+}: {
+  user: User | null;
+  isProUser: boolean;
+}) {
   const [transformationOption, setTransformationOption] =
     useState<TransformationOption>(options[0].value);
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+
+  const debouncedOutput = useDebounce(output, 1000);
+
+  useEffect(() => {
+    if (debouncedOutput) {
+      void saveHistory({
+        user,
+        isProUser,
+        toolType: ToolType.StringConverter,
+        onError: () => {},
+        metadata: {
+          input,
+        },
+      });
+    }
+  }, [debouncedOutput]);
   const transformText = (text: string) => {
     switch (transformationOption) {
       case TransformationOption.camelCase:
@@ -106,7 +133,10 @@ export default function StringConverterComponent() {
     <div className="w-full h-full flex gap-4">
       <TextArea
         initialInput="snake_case_to_camel_case"
-        onInputChange={(input) => setOutput(transformText(input))}
+        onInputChange={(input) => {
+          setInput(input);
+          setOutput(transformText(input));
+        }}
       />
       <div className="w-full h-full">
         <div className="flex items-center mb-4 gap-4 justify-between">
