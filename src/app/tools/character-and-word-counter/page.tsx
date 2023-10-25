@@ -1,4 +1,4 @@
-import CharacterAndWordCounterComponent from "@/app/character-and-word-counter/CharacterAndWordCounterComponent";
+import CharacterAndWordCounterComponent from "@/app/tools/character-and-word-counter/CharacterAndWordCounterComponent";
 
 const CharacterAndWordCounterPage = () => <CharacterAndWordCounterComponent />;
 export default CharacterAndWordCounterPage;

@@ -11,47 +11,47 @@ export type ToolOption = {
 export const toolList: ToolOption[] = [
   {
     name: "JSON Validator",
-    path: "/json-validator",
+    path: "/tools/json-validator",
   },
   {
     name: "String Converter",
-    path: "/string-converter",
+    path: "/tools/string-converter",
   },
   {
     name: "Character/Word Counter",
-    path: "/character-and-word-counter",
+    path: "/tools/character-and-word-counter",
   },
   {
     name: "Unix Time Converter",
-    path: "/unix-time-converter",
+    path: "/tools/unix-time-converter",
   },
   {
     name: "Base64 Encoder",
-    path: "/base64encoder",
+    path: "/tools/base64encoder",
   },
   {
     name: "Url Parser",
-    path: "/url-parser",
+    path: "/tools/url-parser",
   },
   {
     name: "Color Converter",
-    path: "/color-converter",
+    path: "/tools/color-converter",
   },
   {
     name: "Hash Generator",
-    path: "/hash-generator",
+    path: "/tools/hash-generator",
   },
   {
     name: "Line Sort And Dedupe",
-    path: "/line-sort-and-dedupe",
+    path: "/tools/line-sort-and-dedupe",
   },
   {
     name: "Regex Checker",
-    path: "/regex-checker",
+    path: "/tools/regex-checker",
   },
   {
     name: "Diff Viewer",
-    path: "/diff-viewer",
+    path: "/tools/diff-viewer",
   },
 ];
 
