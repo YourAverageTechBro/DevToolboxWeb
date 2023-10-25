@@ -1,127 +1,38 @@
 import {
-  ArrowPathIcon,
-  ChevronRightIcon,
-  CloudArrowUpIcon,
-  Cog6ToothIcon,
-  FingerPrintIcon,
-  LockClosedIcon,
-  ServerIcon,
-} from "@heroicons/react/20/solid";
-import {
-  BoltIcon,
-  CalendarDaysIcon,
+  BuildingLibraryIcon,
+  CommandLineIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const primaryFeatures = [
   {
-    name: "Server monitoring",
+    name: "100% Open Source",
     description:
-      "Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt. Ex tempora quia. Sit nobis consequatur dolores incidunt.",
-    href: "#",
-    icon: BoltIcon,
+      "Open source code that lets you do anything you want with it. Add a new tool, self host the app — the choice is yours.",
+    href: "https://github.com/YourAverageTechBro/DevToolboxWeb",
+    icon: CommandLineIcon,
   },
   {
-    name: "Collaborate",
+    name: "Free To Use",
     description:
-      "Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus. Earum nihil deserunt eos quasi cupiditate. A inventore et molestiae natus.",
-    href: "#",
+      "100% Free tier without any limitations. No credit card required. Optional paid tier available to save your history and support the project.",
+    href: "/upgrade",
     icon: UsersIcon,
   },
   {
-    name: "Task scheduling",
+    name: "Constant updates",
     description:
-      "Et quod quaerat dolorem quaerat architecto aliquam accusantium. Ex adipisci et doloremque autem quia quam. Quis eos molestiae at iure impedit.",
-    href: "#",
-    icon: CalendarDaysIcon,
+      "New features are constantly being added to the app. Have a feature request? Let us know!",
+    href: "https://twitter.com/Dohyun_Kim_",
+    icon: BuildingLibraryIcon,
   },
-];
-const secondaryFeatures = [
-  {
-    name: "Push to deploy.",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.",
-    icon: CloudArrowUpIcon,
-  },
-  {
-    name: "SSL certificates.",
-    description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-    icon: LockClosedIcon,
-  },
-  {
-    name: "Simple queues.",
-    description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.",
-    icon: ArrowPathIcon,
-  },
-  {
-    name: "Advanced security.",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.",
-    icon: FingerPrintIcon,
-  },
-  {
-    name: "Powerful API.",
-    description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-    icon: Cog6ToothIcon,
-  },
-  {
-    name: "Database backups.",
-    description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. ",
-    icon: ServerIcon,
-  },
-];
-const stats = [
-  { id: 1, name: "Developers on the platform", value: "8,000+" },
-  { id: 2, name: "Daily requests", value: "900m+" },
-  { id: 3, name: "Uptime guarantee", value: "99.9%" },
-  { id: 4, name: "Projects deployed", value: "12m" },
 ];
 const footerNavigation = {
-  solutions: [
-    { name: "Hosting", href: "#" },
-    { name: "Data Services", href: "#" },
-    { name: "Uptime Monitoring", href: "#" },
-    { name: "Enterprise Services", href: "#" },
-  ],
-  support: [
-    { name: "Pricing", href: "#" },
-    { name: "Documentation", href: "#" },
-    { name: "Guides", href: "#" },
-    { name: "API Reference", href: "#" },
-  ],
-  company: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Partners", href: "#" },
-  ],
-  legal: [
-    { name: "Claim", href: "#" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-  ],
   social: [
     {
-      name: "Facebook",
-      href: "#",
-      icon: (props: any) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
-    {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/youraveragetechbro/",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -134,7 +45,7 @@ const footerNavigation = {
     },
     {
       name: "Twitter",
-      href: "#",
+      href: "https://twitter.com/Dohyun_Kim_",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
@@ -143,7 +54,7 @@ const footerNavigation = {
     },
     {
       name: "GitHub",
-      href: "#",
+      href: "https://github.com/YourAverageTechBro/DevToolboxWeb",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -156,7 +67,7 @@ const footerNavigation = {
     },
     {
       name: "YouTube",
-      href: "#",
+      href: "https://youtube.com/c/youraveragetechbro",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -221,50 +132,43 @@ export default function Example() {
             <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
               <img
                 className="h-11"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                alt="Your Company"
+                src="/devtoolbox_logo.png"
+                alt="DevToolbox"
               />
-              <div className="mt-24 sm:mt-32 lg:mt-16">
-                <a href="#" className="inline-flex space-x-6">
-                  <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
-                    Latest updates
-                  </span>
-                  <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-300">
-                    <span>Just shipped v1.0</span>
-                    <ChevronRightIcon
-                      className="h-5 w-5 text-gray-500"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </a>
-              </div>
+              {/*<div className="mt-24 sm:mt-32 lg:mt-16">*/}
+              {/*  <a href="#" className="inline-flex space-x-6">*/}
+              {/*    <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">*/}
+              {/*      Latest updates*/}
+              {/*    </span>*/}
+              {/*    <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-300">*/}
+              {/*      <span>Just shipped v1.0</span>*/}
+              {/*      <ChevronRightIcon*/}
+              {/*        className="h-5 w-5 text-gray-500"*/}
+              {/*        aria-hidden="true"*/}
+              {/*      />*/}
+              {/*    </span>*/}
+              {/*  </a>*/}
+              {/*</div>*/}
               <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-                Deploy to the cloud with confidence
+                Essential tools for developers
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-300">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat aliqua.
+                Get access to 10+ tools including diff viewer, JSON validator,
+                unix time converter, regex matcher, character counter, and more.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
-                <a
-                  href="#"
-                  className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                <Link
+                  href="/tools/json-validator"
+                  className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
                 >
-                  Get started
-                </a>
-                <a
-                  href="#"
-                  className="text-sm font-semibold leading-6 text-white"
-                >
-                  Live demo <span aria-hidden="true">→</span>
-                </a>
+                  Take me to the tools 🚀
+                </Link>
               </div>
             </div>
             <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
               <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
                 <img
-                  src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+                  src="/devtoolbox-screenshot.png"
                   alt="App screenshot"
                   width={2432}
                   height={1442}
@@ -276,61 +180,57 @@ export default function Example() {
         </div>
 
         {/* Logo cloud */}
-        <div className="mx-auto mt-8 max-w-7xl px-6 sm:mt-16 lg:px-8">
-          <h2 className="text-center text-lg font-semibold leading-8 text-white">
-            The world’s most innovative companies use our app
-          </h2>
-          <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-            <img
-              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg"
-              alt="Transistor"
-              width={158}
-              height={48}
-            />
-            <img
-              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg"
-              alt="Reform"
-              width={158}
-              height={48}
-            />
-            <img
-              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg"
-              alt="Tuple"
-              width={158}
-              height={48}
-            />
-            <img
-              className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg"
-              alt="SavvyCal"
-              width={158}
-              height={48}
-            />
-            <img
-              className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/statamic-logo-white.svg"
-              alt="Statamic"
-              width={158}
-              height={48}
-            />
-          </div>
-        </div>
+        {/*<div className="mx-auto mt-8 max-w-7xl px-6 sm:mt-16 lg:px-8">*/}
+        {/*  <h2 className="text-center text-lg font-semibold leading-8 text-white">*/}
+        {/*    The world’s most innovative companies use our app*/}
+        {/*  </h2>*/}
+        {/*  <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">*/}
+        {/*    <img*/}
+        {/*      className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"*/}
+        {/*      src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg"*/}
+        {/*      alt="Transistor"*/}
+        {/*      width={158}*/}
+        {/*      height={48}*/}
+        {/*    />*/}
+        {/*    <img*/}
+        {/*      className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"*/}
+        {/*      src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg"*/}
+        {/*      alt="Reform"*/}
+        {/*      width={158}*/}
+        {/*      height={48}*/}
+        {/*    />*/}
+        {/*    <img*/}
+        {/*      className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"*/}
+        {/*      src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg"*/}
+        {/*      alt="Tuple"*/}
+        {/*      width={158}*/}
+        {/*      height={48}*/}
+        {/*    />*/}
+        {/*    <img*/}
+        {/*      className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"*/}
+        {/*      src="https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg"*/}
+        {/*      alt="SavvyCal"*/}
+        {/*      width={158}*/}
+        {/*      height={48}*/}
+        {/*    />*/}
+        {/*    <img*/}
+        {/*      className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"*/}
+        {/*      src="https://tailwindui.com/img/logos/158x48/statamic-logo-white.svg"*/}
+        {/*      alt="Statamic"*/}
+        {/*      width={158}*/}
+        {/*      height={48}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
         {/* Feature section */}
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-base font-semibold leading-7 text-indigo-400">
-              Deploy faster
+              All your essential tools in one place
             </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Everything you need to deploy your app
-            </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Lorem ipsum dolor sit amet consect adipisicing elit. Possimus
-              magnam voluptatum cupiditate veritatis in accusamus quisquam.
+              Did we mention DevToolbox is free to use and open source?
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -364,83 +264,67 @@ export default function Example() {
         </div>
 
         {/* Feature section */}
-        <div className="mt-32 sm:mt-56">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="text-base font-semibold leading-7 text-indigo-400">
-                Everything you need
-              </h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                No server? No problem.
-              </p>
-              <p className="mt-6 text-lg leading-8 text-gray-300">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis.
-              </p>
-            </div>
-          </div>
-          <div className="relative overflow-hidden pt-16">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-              <img
-                src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
-                alt="App screenshot"
-                className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10"
-                width={2432}
-                height={1442}
-              />
-              <div className="relative" aria-hidden="true">
-                <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-gray-900 pt-[7%]" />
-              </div>
-            </div>
-          </div>
-          <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-            <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-              {secondaryFeatures.map((feature) => (
-                <div key={feature.name} className="relative pl-9">
-                  <dt className="inline font-semibold text-white">
-                    <feature.icon
-                      className="absolute left-1 top-1 h-5 w-5 text-indigo-500"
-                      aria-hidden="true"
-                    />
-                    {feature.name}
-                  </dt>{" "}
-                  <dd className="inline">{feature.description}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
+        {/*<div className="mt-32 sm:mt-56">*/}
+        {/*  <div className="mx-auto max-w-7xl px-6 lg:px-8">*/}
+        {/*    <div className="mx-auto max-w-2xl sm:text-center">*/}
+        {/*      <h2 className="text-base font-semibold leading-7 text-indigo-400">*/}
+        {/*        Everything you need*/}
+        {/*      </h2>*/}
+        {/*      <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">*/}
+        {/*        No server? No problem.*/}
+        {/*      </p>*/}
+        {/*      <p className="mt-6 text-lg leading-8 text-gray-300">*/}
+        {/*        Lorem ipsum, dolor sit amet consectetur adipisicing elit.*/}
+        {/*        Maiores impedit perferendis suscipit eaque, iste dolor*/}
+        {/*        cupiditate blanditiis.*/}
+        {/*      </p>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*  <div className="relative overflow-hidden pt-16">*/}
+        {/*    <div className="mx-auto max-w-7xl px-6 lg:px-8">*/}
+        {/*      <img*/}
+        {/*        src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"*/}
+        {/*        alt="App screenshot"*/}
+        {/*        className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10"*/}
+        {/*        width={2432}*/}
+        {/*        height={1442}*/}
+        {/*      />*/}
+        {/*      <div className="relative" aria-hidden="true">*/}
+        {/*        <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-gray-900 pt-[7%]" />*/}
+        {/*      </div>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
         {/* Stats */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-            <h2 className="text-base font-semibold leading-8 text-indigo-400">
-              Our track record
-            </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Trusted by thousands of developers&nbsp;worldwide
-            </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate
-              blanditiis ratione.
-            </p>
-          </div>
-          <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-white sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div
-                key={stat.id}
-                className="flex flex-col gap-y-3 border-l border-white/10 pl-6"
-              >
-                <dt className="text-sm leading-6">{stat.name}</dt>
-                <dd className="order-first text-3xl font-semibold tracking-tight">
-                  {stat.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        {/*<div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">*/}
+        {/*  <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">*/}
+        {/*    <h2 className="text-base font-semibold leading-8 text-indigo-400">*/}
+        {/*      Our track record*/}
+        {/*    </h2>*/}
+        {/*    <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">*/}
+        {/*      Trusted by thousands of developers&nbsp;worldwide*/}
+        {/*    </p>*/}
+        {/*    <p className="mt-6 text-lg leading-8 text-gray-300">*/}
+        {/*      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores*/}
+        {/*      impedit perferendis suscipit eaque, iste dolor cupiditate*/}
+        {/*      blanditiis ratione.*/}
+        {/*    </p>*/}
+        {/*  </div>*/}
+        {/*  <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-white sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">*/}
+        {/*    {stats.map((stat) => (*/}
+        {/*      <div*/}
+        {/*        key={stat.id}*/}
+        {/*        className="flex flex-col gap-y-3 border-l border-white/10 pl-6"*/}
+        {/*      >*/}
+        {/*        <dt className="text-sm leading-6">{stat.name}</dt>*/}
+        {/*        <dd className="order-first text-3xl font-semibold tracking-tight">*/}
+        {/*          {stat.value}*/}
+        {/*        </dd>*/}
+        {/*      </div>*/}
+        {/*    ))}*/}
+        {/*  </dl>*/}
+        {/*</div>*/}
 
         {/* CTA section */}
         <div className="relative isolate mt-32 px-6 py-32 sm:mt-56 sm:py-40 lg:px-8">
@@ -491,17 +375,13 @@ export default function Example() {
               <br />
               Start using our app today.
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-              Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
-              anim id veniam aliqua proident excepteur commodo do ea.
-            </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <Link
+                href="/tools/json-validator"
                 className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Get started
-              </a>
+              </Link>
               <a
                 href="#"
                 className="text-sm font-semibold leading-6 text-white"
@@ -533,7 +413,7 @@ export default function Example() {
               ))}
             </div>
             <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">
-              &copy; 2020 Your Company, Inc. All rights reserved.
+              &copy; 2023 YATB LLC. All rights reserved.
             </p>
           </div>
         </div>

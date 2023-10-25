@@ -58,7 +58,7 @@ export const toolList: ToolOption[] = [
 export default function ToolList() {
   const pathname = usePathname();
   return (
-    <div className="w-72 bg-gray-700 flex flex-col justify-between overflow-y-scroll">
+    <div className="w-72 bg-gray-700 flex flex-col overflow-y-scroll">
       {toolList.map((toolOption) => (
         <Link
           className={`w-full border-b p-4 hover:bg-gray-600 ${

@@ -19,7 +19,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <div className={"w-full h-screen gap-4 flex"}>{children}</div>
+          <div className={"w-full h-screen"}>{children}</div>
         </body>
       </html>
     </ClerkProvider>
