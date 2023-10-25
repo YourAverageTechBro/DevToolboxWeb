@@ -17,8 +17,9 @@ model History {
 }
 
 model Subscriptions {
-  stripeCustomerId String @id
-  clerkUserId      String
+  stripeCustomerId   String             @id
+  clerkUserId        String
+  subscriptionStatus SubscriptionStatus
 }
 
 enum ToolType {
@@ -33,4 +34,9 @@ enum ToolType {
   StringConverter
   UnixTimeConverter
   UrlParser
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
 }
