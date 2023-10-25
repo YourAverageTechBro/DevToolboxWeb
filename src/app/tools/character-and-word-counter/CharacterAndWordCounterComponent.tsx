@@ -2,6 +2,10 @@
 
 import { ChangeEvent, useEffect, useState } from "react";
 import Selector from "@/app/components/common/Selector";
+import { User } from "@clerk/backend";
+import useDebounce from "@/app/hooks/useDebounce";
+import { saveHistory } from "@/utils/clientUtils";
+import { ToolType } from "@prisma/client";
 
 enum FilterOption {
   Character = "Character",
@@ -18,16 +22,36 @@ const filterOptions = [
   { label: "Custom Delimiter", value: FilterOption.CustomDelimiter },
 ];
 
-export default function CharacterAndWordCounterComponent() {
-  const [input, setInput] = useState(
-    "this is a test input to count how many words there are"
-  );
+export default function CharacterAndWordCounterComponent({
+  user,
+  isProUser,
+}: {
+  user: User | null;
+  isProUser: boolean;
+}) {
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [count, setCount] = useState<number>(0);
   const [currentFilterOption, setCurrentFilterOption] = useState(
     filterOptions[0].value
   );
   const [filter, setFilter] = useState("");
+
+  const debouncedInput = useDebounce<string>(input, 1000);
+
+  useEffect(() => {
+    if (debouncedInput) {
+      void saveHistory({
+        user,
+        isProUser,
+        toolType: ToolType.CharacterAndWordCounter,
+        onError: () => {},
+        metadata: {
+          input,
+        },
+      });
+    }
+  }, [debouncedInput]);
 
   useEffect(() => {
     switch (currentFilterOption) {

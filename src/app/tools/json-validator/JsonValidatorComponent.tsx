@@ -1,11 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextArea from "@/app/components/common/TextArea";
 import FormattedJsonOutput from "@/app/components/common/FormatedJsonOutput";
+import { User } from "@clerk/backend";
+import { saveHistory } from "@/utils/clientUtils";
+import { ToolType } from "@prisma/client";
+import useDebounce from "@/app/hooks/useDebounce";
 
-export default function JsonValidatorComponent() {
+export default function JsonValidatorComponent({
+  user,
+  isProUser,
+}: {
+  user: User | null;
+  isProUser: boolean;
+}) {
   const [output, setOutput] = useState("");
+  const debouncedOutput = useDebounce(output, 1000);
+  useEffect(() => {
+    if (debouncedOutput) {
+      void saveHistory({
+        user,
+        isProUser,
+        toolType: ToolType.JsonValidator,
+        onError: () => {},
+        metadata: {
+          output,
+        },
+      });
+    }
+  }, [debouncedOutput]);
+
   return (
     <div className="w-full h-full flex gap-4">
       <TextArea
