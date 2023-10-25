@@ -1,6 +1,6 @@
 import { ToolType } from "@prisma/client";
 
-const saveHistory = async (
+export const saveHistory = async (
   userId: string,
   toolType: ToolType,
   metadata: Record<string, any>,
