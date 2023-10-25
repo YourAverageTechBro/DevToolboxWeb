@@ -30,7 +30,7 @@ export default function UnixTimeConverterComponent() {
   const [unixTime, setUnixTime] = useState(0);
   const [day, setDay] = useState<string>("");
   const [dayOfYear, setDayOfYear] = useState<number>(0);
-  const [isLeapYear, setIsLeapYear] = useState<boolean | undefined>(undefined);
+  const [isLeapYear, setIsLeapYear] = useState<boolean>(false);
   const [otherDateFormats, setOtherDateFormats] = useState<string[]>([]);
   const [timeInMillisecondsState, setTimeInMillisecondsState] =
     useState<number>(0);
@@ -206,7 +206,7 @@ export default function UnixTimeConverterComponent() {
     setUnixTime(0);
     setDay("");
     setDayOfYear(0);
-    setIsLeapYear(undefined);
+    setIsLeapYear(false);
     setOtherDateFormats([]);
     setTimeInMillisecondsState(0);
   };

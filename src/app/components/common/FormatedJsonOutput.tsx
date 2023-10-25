@@ -1,4 +1,4 @@
-import * as jp from "jsonpath";
+import { JSONPath } from "jsonpath-plus";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import useDebounce from "@/app/hooks/useDebounce";
 import Selector from "@/app/components/common/Selector";
@@ -17,7 +17,6 @@ const spacingOptions: SpacingOption[] = [
 
 type Props = {
   value: string;
-  // eslint-disable-next-line react/require-default-props
   title?: string;
 };
 export default function FormattedJsonOutput({
@@ -77,7 +76,7 @@ export default function FormattedJsonOutput({
 
   const filterJSONByJsonPath = (data: any, jsonPath: string): any => {
     try {
-      return jp.query(data ?? {}, jsonPath);
+      return JSONPath({ path: jsonPath, json: data ?? {} });
     } catch (error: any) {
       return data;
     }
