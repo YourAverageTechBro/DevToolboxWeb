@@ -17,7 +17,7 @@ const primaryFeatures = [
     name: "Free To Use",
     description:
       "100% Free tier without any limitations. No credit card required. Optional paid tier available to save your history and support the project.",
-    href: "/upgrade",
+    href: "/tools/json-validator",
     icon: UsersIcon,
   },
   {
