@@ -5,6 +5,7 @@ import {
 } from "@/actions/stripe";
 import { getUserAndSubscriptionState } from "@/actions/user";
 import Link from "next/link";
+import prisma from "@/db/prisma";
 import { getPathFromToolType } from "@/utils/clientUtils";
 
 const fetchUserHistory = async (userId: string) =>
