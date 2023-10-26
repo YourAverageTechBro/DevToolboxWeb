@@ -32,9 +32,7 @@ export default function UnixTimeConverterComponent({
   const [timeOption, setTimeOption] = useState<TimeOption>(
     timeOptions[0].value
   );
-  const [timeString, setTimeString] = useState<string>(
-    new Date().getTime().toString()
-  );
+  const [timeString, setTimeString] = useState<string>("");
   const [localTime, setLocalTime] = useState<string>("");
   const [utcTime, setUtcTime] = useState<string>("");
   const [unixTime, setUnixTime] = useState(0);
