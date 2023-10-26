@@ -77,12 +77,7 @@ export default async function HistoryPage() {
               </div>
               <div className="mb-4">
                 <form action={createYearlyCheckoutSession}>
-                  <input
-                    type="hidden"
-                    name="priceId"
-                    value={process.env.NEXT_PUBLIC_YEARLY_PRODUCT_ID}
-                  />
-                  {/*<input type="hidden" name="userId" value={user?.id} />*/}
+                  <input type="hidden" name="userId" value={user?.id} />
                   <Button type="submit">Upgrade</Button>
                 </form>
               </div>
