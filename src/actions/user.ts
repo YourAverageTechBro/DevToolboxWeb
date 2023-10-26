@@ -2,6 +2,7 @@
 
 import prisma from "@/db/prisma";
 import { currentUser } from "@clerk/nextjs";
+import { SubscriptionStatus } from ".prisma/client";
 
 export const getUserAndSubscriptionState = async () => {
   const user = await currentUser();
@@ -12,7 +13,10 @@ export const getUserAndSubscriptionState = async () => {
         clerkUserId: user.id,
       },
     });
-    if (subscriptions.length !== 0) {
+    if (
+      subscriptions.length !== 0 &&
+      subscriptions[0].subscriptionStatus === SubscriptionStatus.ACTIVE
+    ) {
       isProUser = true;
     }
   }
