@@ -5,6 +5,7 @@ import type { Stripe } from "stripe";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { stripe } from "@/lib/stripe";
+import prisma from "@/db/prisma";
 
 export async function createYearlyCheckoutSession(
   data: FormData
