@@ -2,6 +2,7 @@ import { Button } from "@/app/components/common/Button";
 import {
   createLifetimeCheckoutSession,
   createYearlyCheckoutSession,
+  redirectToCustomerPortal,
 } from "@/actions/stripe";
 import { getUserAndSubscriptionState } from "@/actions/user";
 import Link from "next/link";
@@ -27,6 +28,10 @@ export default async function HistoryPage() {
         }
       >
         <p className={"text-4xl font-bold mb-4"}> History: </p>
+        <form className={"mb-4"} action={redirectToCustomerPortal}>
+          <input type="hidden" name="userId" value={user?.id} />
+          <Button type="submit">Manage billing</Button>
+        </form>
         <div className={"w-full flex flex-col"}>
           {history.map((entry, index) => (
             <div

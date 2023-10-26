@@ -58,3 +58,22 @@ export async function createLifetimeCheckoutSession(
 
   redirect(checkoutSession.url as string);
 }
+
+export async function redirectToCustomerPortal(data: FormData) {
+  const userId = data.get("userId") as string;
+  const subscription = await prisma.subscriptions.findFirst({
+    where: {
+      clerkUserId: userId,
+    },
+  });
+  if (!subscription) {
+    throw Error("Subscription not found");
+  }
+  const stripeCustomerId = subscription.stripeCustomerId;
+  const session = await stripe.billingPortal.sessions.create({
+    customer: stripeCustomerId,
+    return_url: "https://devtoolbox.co/tools/history",
+  });
+
+  redirect(session.url as string);
+}
