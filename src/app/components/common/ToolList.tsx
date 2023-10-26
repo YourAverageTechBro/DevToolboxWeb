@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Button } from "@/app/components/common/Button";
+import { StarIcon } from "@heroicons/react/24/outline";
 
 export type ToolOption = {
   name: string;
@@ -82,6 +83,16 @@ export default function ToolList() {
           </p>
         </div>
       </SignedOut>
+      <Link
+        className={`w-full border-y p-4 hover:bg-gray-600`}
+        href={`https://github.com/YourAverageTechBro/DevToolboxWeb`}
+        target="_blank"
+      >
+        <div className={"flex items-center gap-2 "}>
+          <StarIcon className={"w-6 h-6"} />
+          Start Us On Github
+        </div>
+      </Link>
       {toolList.map((toolOption) => (
         <Link
           className={`w-full border-b p-4 hover:bg-gray-600 ${
