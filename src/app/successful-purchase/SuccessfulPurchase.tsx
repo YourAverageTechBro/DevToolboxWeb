@@ -12,7 +12,7 @@ export default function SuccessfulPurchaseClientComponent({
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
-      router.push("/dashboard/researchProjects");
+      router.push("/tools/json-validator");
     }, 3000);
   }, []);
 

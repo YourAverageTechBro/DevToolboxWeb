@@ -54,7 +54,7 @@ export default async function HistoryPage() {
     return (
       <div
         className={
-          "w-full h-1/2 flex flex-col justify-center items-center bg-gray-700 py-8 rounded-md"
+          "w-full h-full flex flex-col justify-center items-center bg-gray-700 py-8 rounded-md"
         }
       >
         <p className={"text-4xl px-36 text-center font-bold"}>
