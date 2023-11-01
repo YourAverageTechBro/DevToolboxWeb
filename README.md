@@ -34,3 +34,30 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Self hosting with docker
+
+Although the project is not yet available on Docker Hub, you can self-host it by building the Docker image yourself. Follow these steps to get started:
+
+**Step 1** : install the docker engine ([how to install docker](https://docs.docker.com/engine/install/))
+
+**Step 2** : clone the repository 
+
+**Step 3** : build the container
+
+```bash
+docker build . -t devoolboxweb
+```
+**Step 4** get api key on [Clerk](https://dashboard.clerk.com/sign-in)
+**Step 5** : run the docker with needed variables : 
+
+```bash
+docker container run \
+    --name devoolboxweb \
+    -p 3000:3000 \
+    -e NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key \
+    -e CLERK_SECRET_KEY=your_secret_key \
+    devoolboxweb
+```
+
+Note : without the vars `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` , the container will throw error code 500.
