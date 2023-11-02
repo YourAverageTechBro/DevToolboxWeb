@@ -38,24 +38,20 @@ export default function RegexCheckerComponent({
     }
   }, [debouncedOutput]);
 
-  const processString = (
-    inputString: string,
-    currentRegexExpression: string
-  ) => {
+useEffect(() => {
+  const processString = () => {
     try {
       // Write code that matches the input against the regex expression and return list of all matches
-      setInput(inputString);
-      setRegexExpression(currentRegexExpression);
-      if (!currentRegexExpression) {
+      if (!regexExpression) {
         setOutput("");
         return;
       }
-      const regex = new RegExp(currentRegexExpression, "g");
+      const regex = new RegExp(regexExpression, "g");
       const matches: string[] = [];
       let match: RegExpExecArray | null;
 
       // eslint-disable-next-line no-cond-assign
-      while ((match = regex.exec(inputString)) !== null) {
+      while ((match = regex.exec(input)) !== null) {
         matches.push(match[0]);
       }
       setOutput(matches.join("\n"));
@@ -63,6 +59,10 @@ export default function RegexCheckerComponent({
       setOutput("");
     }
   };
+  processString();
+},[input, regexExpression])
+
+ 
 
   return (
     <div className="w-full h-full flex gap-4">
@@ -84,7 +84,7 @@ export default function RegexCheckerComponent({
       focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-600 mb-4`}
           placeholder="Regex Expression: e.g. $.school.class[0].student"
           value={regexExpression}
-          onChange={(e) => processString(input, e.currentTarget.value)}
+          onChange={(e) => setRegexExpression(e.currentTarget.value)}
         />
         <textarea
           className="px-8 py-2 block w-full rounded-lg border-0
@@ -93,7 +93,7 @@ export default function RegexCheckerComponent({
         focus:ring-indigo-600 sm:text-sm sm:leading-6"
           style={{ height: "calc(100% - 96px)" }}
           value={input}
-          onInput={(e) => processString(e.currentTarget.value, regexExpression)}
+          onInput={(e) => setInput(e.currentTarget.value)}
         />
       </div>
       <ReadOnlyTextArea value={output} />

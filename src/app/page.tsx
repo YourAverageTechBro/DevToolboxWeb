@@ -4,6 +4,7 @@ import {
   UsersIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from 'next/image';
 
 const primaryFeatures = [
   {
@@ -130,12 +131,14 @@ export default function Example() {
           </div>
           <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-40 lg:flex lg:px-8 lg:pt-40">
             <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-              <img
+              <Image
                 className="h-11"
                 src="/devtoolbox_logo.png"
+                width={44}
+                height={44}
                 alt="DevToolbox"
               />
-              {/*<div className="mt-24 sm:mt-32 lg:mt-16">*/}
+              {/* <div className="mt-24 sm:mt-32 lg:mt-16">*/}
               {/*  <a href="#" className="inline-flex space-x-6">*/}
               {/*    <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">*/}
               {/*      Latest updates*/}
@@ -148,7 +151,7 @@ export default function Example() {
               {/*      />*/}
               {/*    </span>*/}
               {/*  </a>*/}
-              {/*</div>*/}
+              {/*</div> */}
               <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
                 Essential tools for developers
               </h1>
@@ -167,13 +170,13 @@ export default function Example() {
             </div>
             <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
               <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-                <img
-                  src="/devtoolbox-screenshot.png"
-                  alt="App screenshot"
-                  width={2432}
-                  height={1442}
-                  className="w-[76rem] rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10"
-                />
+              <Image
+                src="/devtoolbox-screenshot.png"
+                alt="App screenshot"
+                width={2432}
+                height={1442}
+                className="w-[76rem] rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10"
+              />
               </div>
             </div>
           </div>
