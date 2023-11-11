@@ -90,7 +90,7 @@ export default function ToolList() {
       >
         <div className={"flex items-center gap-2 "}>
           <StarIcon className={"w-6 h-6"} />
-          Start Us On Github
+          Star Us On Github
         </div>
       </Link>
       {toolList.map((toolOption) => (
