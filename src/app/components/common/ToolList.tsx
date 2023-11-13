@@ -13,6 +13,10 @@ export type ToolOption = {
 };
 export const toolList: ToolOption[] = [
   {
+    name: "Diff Viewer",
+    path: "/tools/diff-viewer",
+  },
+  {
     name: "JSON Validator",
     path: "/tools/json-validator",
   },
@@ -51,10 +55,6 @@ export const toolList: ToolOption[] = [
   {
     name: "Regex Checker",
     path: "/tools/regex-checker",
-  },
-  {
-    name: "Diff Viewer",
-    path: "/tools/diff-viewer",
   },
 ];
 
