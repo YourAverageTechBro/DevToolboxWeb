@@ -5,6 +5,7 @@ import { User } from "@clerk/backend";
 import useDebounce from "@/app/hooks/useDebounce";
 import { saveHistory } from "@/utils/clientUtils";
 import { ToolType } from "@prisma/client";
+import { SketchPicker } from 'react-color';
 
 export default function ColorConverterComponent({
   user,
@@ -115,11 +116,16 @@ export default function ColorConverterComponent({
       <div>
         <p className="font-bold text-sm mb-2"> RGB: </p>
         <div className="flex gap-2">
+          <div style={{ background: `rgb(${rgb})`, width: '36px', height: '14px', borderRadius: '2px' }} onClick={handleClick} />
+          {displayColorPicker ? <div style={{ position: 'absolute', zIndex: '2' }}>
+            <div style={{ position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }} onClick={handleClose} />
+            <SketchPicker color={`rgb(${rgb})`} onChangeComplete={handleChange} />
+          </div> : null}
           <input
             className="px-4 py-2 w-full block rounded-lg border-0
-        bg-gray-700 text-white shadow-sm ring-1 ring-inset
-        ring-gray-300 focus:ring-2 focus:ring-inset
-        focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            bg-gray-700 text-white shadow-sm ring-1 ring-inset
+            ring-gray-300 focus:ring-2 focus:ring-inset
+            focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={rgb}
             onChange={(e) => handleRgbChange(e.currentTarget.value)}
           />
