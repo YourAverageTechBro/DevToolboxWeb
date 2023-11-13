@@ -25,6 +25,12 @@ export default function RegexCheckerComponent({
   const debouncedOutput = useDebounce(output, 1000);
 
   useEffect(() => {
+    const regex = new RegExp(regexExpression);
+    const matches = input.match(regex);
+    setOutput(matches ? matches.join(', ') : 'No matches found');
+  }, []);
+
+  useEffect(() => {
     if (debouncedOutput) {
       void saveHistory({
         user,
