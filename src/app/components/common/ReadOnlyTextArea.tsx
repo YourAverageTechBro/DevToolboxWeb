@@ -3,7 +3,7 @@ type Props = {
   // eslint-disable-next-line react/require-default-props
   title?: string;
 };
-export default function ReadOnlyTextArea({ value, title = "output:" }: Props) {
+export default function ReadOnlyTextArea({ value, title = "Output:" }: Props) {
   return (
     <div className="w-full h-full">
       <div className="flex items-center mb-4 gap-4 justify-between">
