@@ -82,7 +82,7 @@ export default function CharacterAndWordCounterComponent({
       <div className="w-full h-full">
         <div className="flex justify-between items-center mb-4 gap-4">
           <div className="flex gap-4 items-center">
-            <p className="font-bold text-xl"> input: </p>
+            <p className="font-bold text-xl"> Input: </p>
             <button
               type="button"
               className="rounded-md bg-indigo-500 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
@@ -105,7 +105,7 @@ export default function CharacterAndWordCounterComponent({
 
       <div className="w-full h-full">
         <div className="flex items-center mb-4 gap-4 justify-between">
-          <p className="font-bold text-xl"> output: </p>
+          <p className="font-bold text-xl"> Output: </p>
           <div className="flex gap-4 items-center justify-end w-full">
             <Selector
               values={filterOptions}

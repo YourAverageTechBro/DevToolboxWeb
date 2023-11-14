@@ -21,7 +21,7 @@ type Props = {
 };
 export default function FormattedJsonOutput({
   value,
-  title = "output",
+  title = "Output",
 }: Props) {
   const [jsonPathFilter, setJsonPathFilter] = useState("");
   const [numberOfSpaces, setNumberOfSpaces] = useState(2);
