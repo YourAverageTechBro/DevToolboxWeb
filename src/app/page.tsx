@@ -25,7 +25,7 @@ const primaryFeatures = [
     name: "Constant updates",
     description:
       "New features are constantly being added to the app. Have a feature request? Let us know!",
-    href: "https://twitter.com/Dohyun_Kim_",
+    href: "https://github.com/YourAverageTechBro/DevToolboxWeb/issues",
     icon: BuildingLibraryIcon,
   },
 ];
