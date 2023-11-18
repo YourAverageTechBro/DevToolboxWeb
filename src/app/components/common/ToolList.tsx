@@ -56,6 +56,10 @@ export const toolList: ToolOption[] = [
     name: "Regex Checker",
     path: "/tools/regex-checker",
   },
+  {
+    name: "Markdown Editor",
+    path: "/tools/markdown-editor",
+  },
 ];
 
 export default function ToolList() {
