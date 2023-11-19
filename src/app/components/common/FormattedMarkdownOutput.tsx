@@ -2,7 +2,8 @@ import { JSONPath } from "jsonpath-plus";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import useDebounce from "@/app/hooks/useDebounce";
 import Selector from "@/app/components/common/Selector";
-import { micromark } from "micromark";
+import { marked } from "marked";
+import 'github-markdown-css';
 
 type Props = {
   input: string;
@@ -17,7 +18,7 @@ export default function FormattedMarkdownOutput({
   const formatMarkdown = useCallback(
     (input: string) => {
         try {
-            return micromark(input)
+            return marked(input)
         } catch (e: any) {
             if (e instanceof SyntaxError) {
               return e.message;
@@ -62,7 +63,7 @@ export default function FormattedMarkdownOutput({
         bg-gray-700 shadow-sm ring-1 ring-inset
         ring-gray-300 focus:ring-2 focus:ring-inset
         focus:ring-indigo-600 sm:text-sm sm:leading-6 language-json whitespace-pre-wrap
-        overflow-y-scroll"
+        overflow-y-scroll markdown-body"
         dangerouslySetInnerHTML={{ __html: output }}
         style={{ height: "calc(100% - 44px)" }}
       />
