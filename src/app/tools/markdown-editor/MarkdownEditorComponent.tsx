@@ -54,4 +54,25 @@ const initialInput =
 ***Emphasis Italic*** ___Emphasis Italic___
 Superscript: X<sub>2</sub>，Subscript: O<sup>2</sup>
 > Blockquotes
-Paragraphs and Line Breaks`
+## Images
+
+![](https://i0.wp.com/www.globalemancipation.ngo/wp-content/uploads/2017/09/github-logo.png?ssl=1)
+
+## Table
+
+| Feature | Description |
+|---|---|
+| Headings | Different levels of headings to organize content |
+| Paragraphs | Basic text formatting and indentation |
+| Lists | Ordered and unordered lists for structured content |
+| Links | Internal and external links for navigation |
+| Images | Embedding images to enhance visual appeal |
+| Code blocks | Highlighting code snippets for programming examples |
+| Tables | Presenting data in a structured format |
+| Blockquotes | Quoting text or highlighting important points |
+| Horizontal rules | Separating sections of content |
+| Footnotes | Adding additional information or references |
+
+## Code Block
+\`\`\`\console.log('hello, world!')\`\`\`\
+`;
