@@ -38,13 +38,22 @@ export default function FormattedMarkdownOutput({
         <p className="font-bold text-xl"> {title}: </p>
         <div className="flex gap-4">
             <button
+                  type="button"
+                  className="rounded-md bg-indigo-500 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  onClick={async () => {
+                  await navigator.clipboard.writeText(input);
+                  }}
+              >
+              Copy Input
+            </button>
+            <button
                 type="button"
                 className="rounded-md bg-indigo-500 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                 onClick={async () => {
                 await navigator.clipboard.writeText(output);
                 }}
             >
-            Copy
+            Copy Output
           </button>
         </div>
         </div>
