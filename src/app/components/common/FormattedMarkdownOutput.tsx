@@ -3,6 +3,7 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import useDebounce from "@/app/hooks/useDebounce";
 import Selector from "@/app/components/common/Selector";
 import { marked } from "marked";
+import * as DOMPurify from 'dompurify';
 import 'github-markdown-css';
 
 type Props = {
@@ -18,7 +19,12 @@ export default function FormattedMarkdownOutput({
   const formatMarkdown = useCallback(
     (input: string) => {
         try {
-            return marked(input)
+            return DOMPurify.sanitize(
+              marked(
+                // remove the most common zerowidth characters from the start of the file
+                input.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/,"")
+              )
+            )
         } catch (e: any) {
             if (e instanceof SyntaxError) {
               return e.message;
