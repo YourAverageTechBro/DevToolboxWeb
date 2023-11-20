@@ -10,6 +10,7 @@ import { ToolType } from "@prisma/client";
 enum FilterOption {
   Character = "Character",
   Word = "Word",
+  Line = "Line",
   CustomDelimiter = "Custom Delimiter",
 }
 
@@ -19,6 +20,7 @@ const filterOptions = [
     value: FilterOption.Character,
   },
   { label: "Word", value: FilterOption.Word },
+  { label: "Line", value: FilterOption.Line },
   { label: "Custom Delimiter", value: FilterOption.CustomDelimiter },
 ];
 
@@ -67,6 +69,9 @@ export default function CharacterAndWordCounterComponent({
         setCount(input.split(" ").length);
         setOutput(input.split(" ").join("\n"));
         break;
+      case FilterOption.Line:
+        setCount(input.trim().split("\n").length);
+        setOutput(input)
       default:
         break;
     }
