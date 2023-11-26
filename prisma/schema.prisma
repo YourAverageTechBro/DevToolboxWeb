@@ -36,6 +36,7 @@ enum ToolType {
   UnixTimeConverter
   UrlParser
   QrCodeGenerator
+  AsciiConverter
 }
 
 enum SubscriptionStatus {

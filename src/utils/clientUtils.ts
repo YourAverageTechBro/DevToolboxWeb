@@ -74,6 +74,8 @@ export const getPathFromToolType = (toolType: ToolType) => {
       return "url-parser";
     case ToolType.QrCodeGenerator:
       return "qrcode-generator"
+    case ToolType.AsciiConverter:
+      return "ascii-converter"
     default:
       return "/";
   }
