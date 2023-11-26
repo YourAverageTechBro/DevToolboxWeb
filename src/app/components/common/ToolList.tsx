@@ -64,6 +64,10 @@ export const toolList: ToolOption[] = [
     name: "Markdown Editor",
     path: "/tools/markdown-editor",
   },
+  {
+    name: "ASCII Converter",
+    path: "/tools/ascii-converter",
+  },
 ];
 
 export default function ToolList() {
