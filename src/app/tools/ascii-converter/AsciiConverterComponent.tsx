@@ -13,9 +13,9 @@ export default function AsciiConverterComponent({
   user: User | null;
   isProUser: boolean;
 }) {
-  const [normalString, setNormalString] = useState("DevToolboxWeb");
+  const [normalString, setNormalString] = useState("DevToolbox");
   const [asciiString, setAsciiString] = useState(
-    "68 101 118 84 111 111 108 98 111 120 87 101 98"
+    "68 101 118 84 111 111 108 98 111 120"
   );
 
   const debouncedNormalString = useDebounce<string>(normalString, 1000);
