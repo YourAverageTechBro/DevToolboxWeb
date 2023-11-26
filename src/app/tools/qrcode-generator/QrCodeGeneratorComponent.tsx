@@ -89,7 +89,7 @@ export default function QrCodeGeneratorComponent({
         </div>
         {qrText && (
           <div className="mt-5 flex gap-5 items-end">
-            <div className="flex border-white border-4">
+            <div className="flex border-white border-8">
               <QRCode
                 size={256}
                 bgColor="white"
