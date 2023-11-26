@@ -14,7 +14,6 @@ export default function QrCodeGeneratorComponent({
   isProUser: boolean;
 }) {
   const [qrText, setQrText] = useState("http://devtoolbox.co");
-  const qrCodeRef = useRef(null);
 
   const debouncedQrText = useDebounce<string>(qrText, 1000);
 
@@ -82,15 +81,15 @@ export default function QrCodeGeneratorComponent({
               size={256}
               style={{ border: "5px solid white" }}
               bgColor="white"
+              fgColor="black"
               viewBox={`0 0 256 256`}
               value={qrText}
-              ref={qrCodeRef}
               id="QRCode"
             />
             <button
               type="button"
               className="rounded-md mt-4 bg-indigo-500 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              onClick={onImageDownload} // Add onClick handler for the download button
+              onClick={onImageDownload}
             >
               Download
             </button>
