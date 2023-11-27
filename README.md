@@ -14,6 +14,10 @@ pnpm dev
 bun dev
 ```
 
+Get the API key on [Clerk](https://dashboard.clerk.com/sign-in)
+Create a New Application or get the existing API keys
+Create .env.local file and add the **NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY** and **_CLERK_SECRET_KEY_**
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
@@ -41,15 +45,16 @@ Although the project is not yet available on Docker Hub, you can self-host it by
 
 **Step 1** : install the docker engine ([how to install docker](https://docs.docker.com/engine/install/))
 
-**Step 2** : clone the repository 
+**Step 2** : clone the repository
 
 **Step 3** : build the container
 
 ```bash
 docker build . -t devoolboxweb
 ```
+
 **Step 4** get api key on [Clerk](https://dashboard.clerk.com/sign-in)
-**Step 5** : run the docker with needed variables : 
+**Step 5** : run the docker with needed variables :
 
 ```bash
 docker container run \
