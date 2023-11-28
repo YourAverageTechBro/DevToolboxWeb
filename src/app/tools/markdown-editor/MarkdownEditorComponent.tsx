@@ -30,7 +30,7 @@ export default function JsonValidatorComponent({
   //     });
   //   }
   // }, [debouncedOutput]);
-  
+
   return (
     <div className="w-full h-full flex gap-4">
       <TextArea
@@ -42,8 +42,7 @@ export default function JsonValidatorComponent({
   );
 }
 
-const initialInput =
-`# Header
+const initialInput = `# Header
 ## Header 2
 ### Header 3
 #### Header 4
@@ -52,7 +51,7 @@ const initialInput =
 *Italic*      _Italic_
 **Emphasis**  __Emphasis__
 ***Emphasis Italic*** ___Emphasis Italic___
-Superscript: X<sub>2</sub>，Subscript: O<sup>2</sup>
+Subscript: X<sub>2</sub>，Superscript: O<sup>2</sup>
 > Blockquotes
 ## Images
 
