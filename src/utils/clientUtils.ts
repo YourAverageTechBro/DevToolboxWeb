@@ -72,6 +72,8 @@ export const getPathFromToolType = (toolType: ToolType) => {
       return "unix-time-converter";
     case ToolType.UrlParser:
       return "url-parser";
+    case ToolType.QrCodeGenerator:
+      return "qrcode-generator"
     default:
       return "/";
   }

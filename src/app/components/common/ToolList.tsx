@@ -64,6 +64,10 @@ export const toolList: ToolOption[] = [
     name: "Markdown Editor",
     path: "/tools/markdown-editor",
   },
+  {
+    name: "QRCode Generator",
+    path: "/tools/qrcode-generator",
+  },
 ];
 
 export default function ToolList() {
