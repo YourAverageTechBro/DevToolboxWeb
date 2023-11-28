@@ -68,6 +68,10 @@ export const toolList: ToolOption[] = [
     name: "QRCode Generator",
     path: "/tools/qrcode-generator",
   },
+  {
+    name: "ASCII Converter",
+    path: "/tools/ascii-converter",
+  },
 ];
 
 export default function ToolList() {
