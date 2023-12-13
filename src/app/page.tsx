@@ -161,7 +161,7 @@ export default function Example() {
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Link
-                  href="/tools/json-validator"
+                  href="/tools/diff-viewer"
                   className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
                 >
                   Take me to the tools 🚀
