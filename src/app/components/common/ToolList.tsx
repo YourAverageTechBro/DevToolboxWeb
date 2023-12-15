@@ -72,6 +72,10 @@ export const toolList: ToolOption[] = [
     name: "ASCII Converter",
     path: "/tools/ascii-converter",
   },
+  {
+    name: "UUID Generator",
+    path: "/tools/uuid-generator",
+  },
 ];
 
 export default function ToolList() {
