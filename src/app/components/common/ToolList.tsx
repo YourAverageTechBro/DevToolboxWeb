@@ -76,6 +76,10 @@ export const toolList: ToolOption[] = [
     name: "CSS Unit Converter",
     path: "/tools/css-unit-converter",
   },
+  {
+    name: "UUID Generator",
+    path: "/tools/uuid-generator",
+  },
 ];
 
 export default function ToolList() {
