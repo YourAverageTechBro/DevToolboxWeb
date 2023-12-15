@@ -72,6 +72,10 @@ export const toolList: ToolOption[] = [
     name: "ASCII Converter",
     path: "/tools/ascii-converter",
   },
+  {
+    name: "CSS Unit Converter",
+    path: "/tools/css-unit-converter",
+  },
 ];
 
 export default function ToolList() {
