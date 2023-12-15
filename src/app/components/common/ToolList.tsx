@@ -73,6 +73,10 @@ export const toolList: ToolOption[] = [
     path: "/tools/ascii-converter",
   },
   {
+    name: "CSS Unit Converter",
+    path: "/tools/css-unit-converter",
+  },
+  {
     name: "UUID Generator",
     path: "/tools/uuid-generator",
   },
