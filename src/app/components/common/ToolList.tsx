@@ -117,7 +117,11 @@ export default function ToolList() {
           Star Us On Github
         </div>
       </Link>
-      {toolList.map((toolOption) => (
+      {toolList.sort((a,b) => {
+        if (a.name < b.name) return -1;
+        else if (a.name > b.name) return 1;
+        return 0;
+      }).map((toolOption) => (
         <Link
           className={`w-full border-b p-4 hover:bg-gray-600 ${
             pathname === toolOption.path && "bg-gray-500"
