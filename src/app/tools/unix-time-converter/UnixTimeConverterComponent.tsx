@@ -181,6 +181,8 @@ export default function UnixTimeConverterComponent({
         if (Number.isNaN(timeInMilliseconds)) {
           throw new Error("Time string is not a number");
         }
+        if (timeInMilliseconds === Date.now()) {
+          setRelativeTime("0 seconds ago");
         generateOutput(timeInMilliseconds);
         setTimeInMillisecondsState(timeInMilliseconds);
       }
@@ -379,7 +381,7 @@ export default function UnixTimeConverterComponent({
           </div>
 
           <div>
-            <p className="font-bold text-sm mb-2">Day of week:</p>
+            <p className="font-bold text-sm mb-2">Day of Week:</p>
             <div className="flex gap-2">
               <input
                 readOnly
@@ -402,7 +404,7 @@ export default function UnixTimeConverterComponent({
           </div>
 
           <div>
-            <p className="font-bold text-sm mb-2">Day of year:</p>
+            <p className="font-bold text-sm mb-2">Day of Year:</p>
             <div className="flex gap-2">
               <input
                 readOnly
@@ -425,7 +427,7 @@ export default function UnixTimeConverterComponent({
           </div>
 
           <div>
-            <p className="font-bold text-sm mb-2">Is leap year?</p>
+            <p className="font-bold text-sm mb-2">Leap Year</p>
             <div className="flex gap-2">
               <input
                 readOnly
@@ -441,7 +443,7 @@ export default function UnixTimeConverterComponent({
           {otherDateFormats.length > 0 && (
             <div>
               <p className="font-bold text-sm mb-2">
-                Other date formats (local time):
+                Other Formats (Local Time):
               </p>
               <div className="flex flex-col gap-4">
                 {otherDateFormats.map((date) => (
