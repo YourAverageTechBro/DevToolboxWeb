@@ -481,6 +481,10 @@ export default function ColorConverterComponent({
           </button>
         </div>
       </div>
+      <p className="font-bold text-sm mb-2">Preview:</p>
+      <svg width={200} height={200}>
+        <rect width="100%" height="100%" fill={"rgba(" + rgba + ")"}></rect>
+      </svg>
     </div>
   );
 }
