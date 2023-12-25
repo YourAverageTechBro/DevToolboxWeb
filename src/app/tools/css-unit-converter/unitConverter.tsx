@@ -1,5 +1,3 @@
-
-"use client";
 import { findNearestNumber } from "@/utils/findNearestNumber";
 import {
   useState,
@@ -145,5 +143,5 @@ const UnitConverter = () => {
     </div>
   );
 };
-
 export default UnitConverter;
+
