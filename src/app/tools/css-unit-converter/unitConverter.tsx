@@ -69,13 +69,14 @@ const tailwindUnits = [
   28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
 ];
 
-const emToPx = (em: number) => em * 16;
+const emToPx = (em: number, parentPx: number) => em * parentPx;
 const twToPx = (tw: number) => tw * 4;
 
-const pxToEm = (px: number) => px / 16;
+const pxToEm = (px: number, parentPx: number) => px / parentPx;
 const pxToTw = (px: number) => findNearestNumber(tailwindUnits, px / 4) ?? 0;
 
 const UnitConverter = () => {
+  const [parentPx, setParentPx] = useState(16);
   const [em, setEm] = useState(0);
   const [px, setPx] = useState(0);
   const [tw, setTw] = useState(0);
@@ -83,7 +84,7 @@ const UnitConverter = () => {
   const [style, setStyle] = useState({ "--w": `${px}px` } as CSSProperties);
 
   useEffect(() => {
-    setEm(pxToEm(px));
+    setEm(pxToEm(px, parentPx));
     setTw(pxToTw(px));
 
     setStyle({ "--w": `${px}px` } as CSSProperties);
@@ -93,11 +94,21 @@ const UnitConverter = () => {
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
         <UnitInput
+          name="Parent font-size (Px)"
+          value={parentPx}
+          onChange={(n, d) => {
+            if (!d && n !== null) {
+              setParentPx(n);
+              setPx(emToPx(em, n))
+            }
+          }}
+        />
+        <UnitInput
           name="em"
           value={em}
           onChange={(n, d) => {
             if (!d && n !== null) {
-              setPx(emToPx(n));
+              setPx(emToPx(n, parentPx));
             }
           }}
         />
@@ -134,5 +145,5 @@ const UnitConverter = () => {
     </div>
   );
 };
-
 export default UnitConverter;
+
