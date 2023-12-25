@@ -1,3 +1,5 @@
+"use client";
+
 import { findNearestNumber } from "@/utils/findNearestNumber";
 import {
   useState,
