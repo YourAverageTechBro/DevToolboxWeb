@@ -183,6 +183,7 @@ export default function UnixTimeConverterComponent({
         }
         if (timeInMilliseconds === Date.now()) {
           setRelativeTime("0 seconds ago");
+        }
         generateOutput(timeInMilliseconds);
         setTimeInMillisecondsState(timeInMilliseconds);
       }
