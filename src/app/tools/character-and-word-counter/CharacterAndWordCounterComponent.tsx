@@ -62,7 +62,7 @@ export default function CharacterAndWordCounterComponent({
         setOutput(input.split("").join("\n"));
         break;
       case FilterOption.CustomDelimiter:
-        setCount(input.split(filter).length);
+        setCount(input.split(filter).length -1);
         setOutput(input.split(filter).join("\n"));
         break;
       case FilterOption.Word:
