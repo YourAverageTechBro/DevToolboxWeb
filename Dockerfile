@@ -1,14 +1,16 @@
 # Install dependencies only when needed
-FROM node:lts-bullseye-slim AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apt update 
+FROM node:slim AS deps
+# Install openssl and libssl-dev for Prisma
+RUN apt-get update && apt-get install -y openssl libssl-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
-COPY package.json package-lock.json ./ 
+COPY package.json package-lock.json ./
 RUN npm install && npm install sharp
 
 # Rebuild the source code only when needed
-FROM node:lts-bullseye-slim AS builder
+FROM node:slim AS builder
+# Repeat openssl and libssl-dev installation for Prisma in the builder stage
+RUN apt-get update && apt-get install -y openssl libssl-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -22,7 +24,9 @@ RUN npx prisma generate
 RUN npm run build
 
 # Production image, copy all the files and run next
-FROM node:lts-bullseye-slim AS runner
+FROM node:slim AS runner
+# Install openssl and libssl-dev for runtime, in case it's needed by Prisma
+RUN apt-get update && apt-get install -y openssl libssl-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 ENV NODE_ENV production
@@ -45,7 +49,5 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 
 EXPOSE 3000
-
-# ENV PORT 3000
 
 CMD ["node", "server.js"]
