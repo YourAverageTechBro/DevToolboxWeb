@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Notice the removal of spaces around the equals sign for environment variables
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      - CLERK_SECRET_KEY=${CLERK_SECRET_KEY}
+      # Add additional environment variables here
+      # - NEXT_TELEMETRY_DISABLED=1 # Uncomment to disable Next.js telemetry
+    # Removed the volumes that override /app and /app/node_modules
+    command: node server.js
