@@ -5,7 +5,7 @@ RUN apt update
 WORKDIR /app
 
 COPY package.json package-lock.json ./ 
-RUN npm install
+RUN npm install && npm install sharp
 
 # Rebuild the source code only when needed
 FROM node:lts-bullseye-slim AS builder
@@ -46,6 +46,6 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+# ENV PORT 3000
 
 CMD ["node", "server.js"]
