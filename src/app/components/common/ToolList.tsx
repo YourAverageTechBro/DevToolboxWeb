@@ -3,9 +3,9 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-// import { Button } from "@/app/components/common/Button";
-// import { StarIcon } from "@heroicons/react/24/outline";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Button } from "@/app/components/common/Button";
+import { StarIcon } from "@heroicons/react/24/outline";
 
 export type ToolOption = {
   name: string;
@@ -86,15 +86,15 @@ export default function ToolList() {
   const pathname = usePathname();
   return (
     <div className="w-72 bg-gray-700 flex flex-col overflow-y-scroll">
-      {/* <SignedIn>
+      <SignedIn>
         <div className={"px-2 my-4 flex justify-between w-full"}>
           <UserButton afterSignOutUrl="/tools/json-validator" />
           <Button intent={"secondary"} href={"/tools/history"}>
             View History
           </Button>
         </div>
-      </SignedIn> */}
-      {/* <SignedOut>
+      </SignedIn>
+      <SignedOut>
         <div className={"mx-2 my-4 flex flex-col gap-4"}>
           <Button fullWidth intent={"primary"} href={"/sign-in"}>
             Log in / Sign-up
@@ -106,8 +106,8 @@ export default function ToolList() {
             the actions you have done.
           </p>
         </div>
-      </SignedOut> */}
-      {/* <Link
+      </SignedOut>
+      <Link
         className={`w-full border-y p-4 hover:bg-gray-600`}
         href={`https://github.com/YourAverageTechBro/DevToolboxWeb`}
         target="_blank"
@@ -116,7 +116,7 @@ export default function ToolList() {
           <StarIcon className={"w-6 h-6"} />
           Star Us On Github
         </div>
-      </Link> */}
+      </Link>
       {toolList.sort((a,b) => {
         if (a.name < b.name) return -1;
         else if (a.name > b.name) return 1;

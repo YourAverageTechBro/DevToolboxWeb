@@ -13,7 +13,7 @@ export default function QrCodeGeneratorComponent({
   user: User | null;
   isProUser: boolean;
 }) {
-  const [qrText, setQrText] = useState("https://www.linkedin.com/in/connectwithutkarshsingh/");
+  const [qrText, setQrText] = useState("http://devtoolbox.co");
 
   const debouncedQrText = useDebounce<string>(qrText, 1000);
 
