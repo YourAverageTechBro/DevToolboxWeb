@@ -10,11 +10,12 @@ export default function ToolsLayout({
       {" "}
       <ToolList />
       <div
-        className={"mt-4 px-4 w-full "}
-        style={{ height: "calc(100% - 2rem)" }}
+        className={"pt-4 px-4 flex-1 overflow-x-hidden"}
       >
-        {" "}
-        {children}{" "}
+        <div style={{height: "calc(100% - 2rem)"}}>
+          {" "}
+          {children}{" "}
+        </div>
       </div>
     </div>
   );
