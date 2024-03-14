@@ -80,12 +80,16 @@ export const toolList: ToolOption[] = [
     name: "UUID Generator",
     path: "/tools/uuid-generator",
   },
+  {
+    name: "JWT Viewer",
+    path: "/tools/jwt-viewer",
+  },
 ];
 
 export default function ToolList() {
   const pathname = usePathname();
   return (
-    <div className="w-72 bg-gray-700 flex flex-col overflow-y-scroll">
+    <div className="w-72 bg-gray-700 flex shrink-0 flex-col overflow-y-scroll">
       <SignedIn>
         <div className={"px-2 my-4 flex justify-between w-full"}>
           <UserButton afterSignOutUrl="/tools/json-validator" />
@@ -108,7 +112,7 @@ export default function ToolList() {
         </div>
       </SignedOut>
       <Link
-        className={`w-full border-y p-4 hover:bg-gray-600`}
+        className={`w-full border-y py-3 px-4 hover:bg-gray-600`}
         href={`https://github.com/YourAverageTechBro/DevToolboxWeb`}
         target="_blank"
       >
@@ -123,7 +127,7 @@ export default function ToolList() {
         return 0;
       }).map((toolOption) => (
         <Link
-          className={`w-full border-b p-4 hover:bg-gray-600 ${
+          className={`w-full border-b py-3 px-4 hover:bg-gray-600 ${
             pathname === toolOption.path && "bg-gray-500"
           }`}
           key={toolOption.name}

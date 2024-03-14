@@ -37,6 +37,7 @@ enum ToolType {
   UrlParser
   QrCodeGenerator
   AsciiConverter
+  JwtViewer
 }
 
 enum SubscriptionStatus {
