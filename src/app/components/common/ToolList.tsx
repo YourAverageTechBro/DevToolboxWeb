@@ -45,6 +45,14 @@ export const toolList: ToolOption[] = [
     path: "/tools/url-parser",
   },
   {
+    name: "Url Encoder",
+    path: "/tools/url-encoder",
+  },
+  {
+    name: "Url Decoder",
+    path: "/tools/url-decoder",
+  },
+  {
     name: "Color Converter",
     path: "/tools/color-converter",
   },
