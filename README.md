@@ -2,7 +2,23 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+### 1. Obtain Your Clerk Secret Key or API Key 
+
+- Go to the Clerk [Dashboard](https://dashboard.clerk.com/sign-in).
+- Log in with your credentials.
+- Navigate to your instance or project settings.
+- Look for the section where API keys or secrets are listed. You should find your Secret Key or API Key there.
+
+### 2. Create a .env.local File
+
+- Create the **.env.local** File: In the root directory of your project, create a file named .env.local
+- Add Your Keys: Open the **.env.local** file and add your Clerk keys like so:
+
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<your_clerk_publishable_key_here>
+CLERK_SECRET_KEY=<your_clerk_secret_key_here>
+```
+### 3. Run Your Development Server
 
 ```bash
 npm run dev
