@@ -30,7 +30,11 @@ export default function QrCodeGeneratorComponent({
   }, [debouncedQrText]);
 
   const handleTextChange = (input: string) => {
-    setQrText(input);
+    const trimmedInput = input.trim();
+    if (trimmedInput.length > 1500) {
+      return;
+    }
+    setQrText(trimmedInput);
   };
 
   const onImageDownload = () => {
@@ -67,7 +71,24 @@ export default function QrCodeGeneratorComponent({
   return (
     <div className="w-full h-full flex flex-col gap-4">
       <div>
-        <p className="font-bold text-sm mb-2">Text: </p>
+        <div className="flex h-10">
+          <p className="font-bold text-sm mt-2">Text: </p>
+          {qrText.length == 1500 && (
+            <div className="flex items-start">
+              <div className="relative ml-7 mb-2">
+                <div className="inline-block border-2 border-yellow-500 text-white rounded-lg text-sm bg-orange-500 bg-opacity-10 p-1">
+                  <span style={{
+                    position: 'relative', left: '-19px', bottom: '-12px', display: 'inline-block',
+                    width: 0, height: 0, borderTop: '7px solid transparent', borderBottom: '7px solid transparent',
+                    borderRight: '14px solid orange', transform: 'rotate(90deg)'
+                  }}>
+                  </span>
+                  Character limit reached: 1500 characters max.
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="flex gap-2">
           <input
             className="px-4 py-2 w-full block rounded-lg border-0
