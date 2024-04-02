@@ -99,6 +99,7 @@ export default function LineSortAndDedupeComponent({
     } else {
       words = [inputString];
     }
+    words = words.filter((str) => str.length);
     return words;
   };
 
