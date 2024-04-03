@@ -53,6 +53,9 @@ const dedupingOptions = [
     value: DedupingOptions.None,
   },
 ];
+
+const initialInput = "alpha, beta, gamma, alpha";
+
 export default function LineSortAndDedupeComponent({
   user,
   isProUser,
@@ -64,12 +67,12 @@ export default function LineSortAndDedupeComponent({
     useState<SortingOption>(SortingOption.AtoZ);
   const [currentDedupingOption, setCurrentDedupingOption] =
     useState<DedupingOptions>(DedupingOptions.Dedupe);
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
+  const [input, setInput] = useState(initialInput);
+  const [output, setOutput] = useState("alpha\nbeta\ngamma\n");
   const debouncedOutput = useDebounce(output, 1000);
 
   useEffect(() => {
-    if (debouncedOutput) {
+    if (debouncedOutput && debouncedOutput !== initialInput) {
       void saveHistory({
         user,
         isProUser,
