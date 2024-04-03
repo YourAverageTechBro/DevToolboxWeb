@@ -90,6 +90,9 @@ export default function LineSortAndDedupeComponent({
     if (hasComma && hasNewLine) {
       const cleanedString = inputString.replace(/,/g, "");
       words = cleanedString.split("\n");
+    } else if (hasComma && hasSpace) {
+      const cleanedString = inputString.replace(/,/g, "");
+      words = cleanedString.split(" ")
     } else if (hasComma) {
       words = inputString.split(",");
     } else if (hasNewLine) {
