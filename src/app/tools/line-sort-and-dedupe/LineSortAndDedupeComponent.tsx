@@ -53,6 +53,9 @@ const dedupingOptions = [
     value: DedupingOptions.None,
   },
 ];
+
+const initialInput = "alpha, beta, gamma, alpha";
+
 export default function LineSortAndDedupeComponent({
   user,
   isProUser,
@@ -64,12 +67,12 @@ export default function LineSortAndDedupeComponent({
     useState<SortingOption>(SortingOption.AtoZ);
   const [currentDedupingOption, setCurrentDedupingOption] =
     useState<DedupingOptions>(DedupingOptions.Dedupe);
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
+  const [input, setInput] = useState(initialInput);
+  const [output, setOutput] = useState("alpha\nbeta\ngamma\n");
   const debouncedOutput = useDebounce(output, 1000);
 
   useEffect(() => {
-    if (debouncedOutput) {
+    if (debouncedOutput && debouncedOutput !== initialInput) {
       void saveHistory({
         user,
         isProUser,
@@ -82,15 +85,44 @@ export default function LineSortAndDedupeComponent({
     }
   }, [debouncedOutput]);
 
+  const getWordsFromString = (inputString: string): string[] => {
+    let words: string[] = [];
+    const hasComma = inputString.includes(",");
+    const hasNewLine = inputString.includes("\n");
+    const hasSpace = inputString.includes(" ");
+    if (hasComma && hasNewLine) {
+      const cleanedString = inputString.replace(/,/g, "");
+      words = cleanedString.split("\n");
+    } else if (hasComma && hasSpace) {
+      const cleanedString = inputString.replace(/,/g, "");
+      words = cleanedString.split(" ")
+    } else if (hasComma) {
+      words = inputString.split(",");
+    } else if (hasNewLine) {
+      words = inputString.split("\n");
+    } else if (hasSpace) {
+      words = inputString.split(" ");
+    } else {
+      words = [inputString];
+    }
+    words = words.filter((str) => str.length);
+    return words;
+  };
+
   const dedupeString = (
     stringToDedupe: string,
     dedupingOption: DedupingOptions
   ) => {
     setCurrentDedupingOption(dedupingOption);
     if (dedupingOption === DedupingOptions.None) return stringToDedupe;
-    const lines = stringToDedupe.split("\n");
+    const words = getWordsFromString(stringToDedupe);
+    const dedupedWords = new Set<string>();
+    for (const word of words) {
+        const cleanedWord = word.replace(/(^['"])|(['"]$)/g, "");
+        dedupedWords.add(cleanedWord);
+    }
     // @ts-ignore
-    const dedupedLines = [...new Set(lines)];
+    const dedupedLines = [...Array.from(dedupedWords)];
     return dedupedLines.join("\n");
   };
 
