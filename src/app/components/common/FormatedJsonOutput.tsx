@@ -1,7 +1,9 @@
 import { JSONPath } from "jsonpath-plus";
 import { ChangeEvent, useEffect, useState } from "react";
 import Selector from "@/app/components/common/Selector";
-import ReactJson from "react-json-view";
+import dynamic from "next/dynamic";
+
+const ReactJson = dynamic(() => import("react-json-view"));
 
 type SpacingOption = {
   value: number;
@@ -60,12 +62,13 @@ export default function FormattedJsonOutput({
 
   const JsonObject = ({ value }: { value: string }) => {
     try {
-      if (!value.length) {
-        const dangerousHtml = `<span class="text-white-400">{}</span>`;
-        return outputBlock(dangerousHtml);
+      const emptyBraces = `<span class="text-white-400">{}</span>`;
+      if (!value.length || typeof document === undefined) {
+        return outputBlock(emptyBraces);
       }
-      setOutput(value);
       const jsonValue = JSON.parse(value);
+      if (typeof jsonValue !== "object") return outputBlock(emptyBraces);
+      setOutput(value);
       return (
         <div
           style={{ height: "calc(100% - 96px)" }}
