@@ -1,7 +1,9 @@
 import { JSONPath } from "jsonpath-plus";
 import { ChangeEvent, useEffect, useState } from "react";
 import Selector from "@/app/components/common/Selector";
-import ReactJson from "react-json-view";
+import dynamic from "next/dynamic";
+
+const ReactJson = dynamic(() => import("react-json-view"));
 
 type SpacingOption = {
   value: number;
@@ -60,12 +62,13 @@ export default function FormattedJsonOutput({
 
   const JsonObject = ({ value }: { value: string }) => {
     try {
-      if (!value.length) {
-        const dangerousHtml = `<span class="text-white-400">{}</span>`;
-        return outputBlock(dangerousHtml);
+      const emptyBraces = `<span class="text-white-400">{}</span>`;
+      if (!value.length || typeof document === undefined) {
+        return outputBlock(emptyBraces);
       }
-      setOutput(value);
       const jsonValue = JSON.parse(value);
+      if (typeof jsonValue !== "object") return outputBlock(emptyBraces);
+      setOutput(value);
       return (
         <div
           style={{ height: "calc(100% - 96px)" }}
@@ -103,7 +106,12 @@ export default function FormattedJsonOutput({
             type="button"
             className="rounded-md bg-indigo-500 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             onClick={async () => {
-              await navigator.clipboard.writeText(output);
+              const jsonOutput = JSON.stringify(
+                JSON.parse(output),
+                null,
+                numberOfSpaces
+              );
+              await navigator.clipboard.writeText(jsonOutput);
             }}
           >
             Copy

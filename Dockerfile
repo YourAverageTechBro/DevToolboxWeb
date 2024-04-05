@@ -5,7 +5,7 @@ RUN apt update
 WORKDIR /app
 
 COPY package.json package-lock.json ./ 
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 # Rebuild the source code only when needed
 FROM node:lts-bullseye-slim AS builder
