@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import TextArea from "@/app/components/common/TextArea";
-import FormattedJsonOutput from "@/app/components/common/FormatedJsonOutput";
+import FormattedJsonOutputV2 from "@/app/components/common/FormatedJsonOutputV2";
 import { User } from "@clerk/backend";
 import { saveHistory } from "@/utils/clientUtils";
 import { ToolType } from "@prisma/client";
@@ -37,7 +37,7 @@ export default function JsonValidatorComponent({
         initialInput={initialInput}
         onInputChange={(input) => setOutput(input)}
       />
-      <FormattedJsonOutput value={output} />
+      <FormattedJsonOutputV2 value={output} />
     </div>
   );
 }
