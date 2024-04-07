@@ -136,6 +136,10 @@ export default function ClipFormatterComponent({
 \t\t\thello World tabbed
             hello! wolrds @#$ 123
             hello hell help hello
+
+        if(1+1===2){
+            console.log("hello")
+        }
 `;
 
   return (
@@ -193,7 +197,7 @@ export default function ClipFormatterComponent({
               }}
             />
             <span className="pl-2">
-              Indent to shortest line (Remove extra tabs and spaces from code)
+              Indent to shortest line (Code formatting)
             </span>
           </label>
           <label>
