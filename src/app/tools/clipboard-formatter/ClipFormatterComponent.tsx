@@ -22,6 +22,7 @@ export default function ClipFormatterComponent({
   const [removeSpaces, setRemoveSpaces] = React.useState(false);
   const [removeTabs, setRemoveTabs] = React.useState(false);
   const [removeNewLines, setRemoveNewLines] = React.useState(false);
+  const [indentToShortest, setIndentToShortest] = React.useState(false);
   const [removeSpacesBeforeFirstWord, setRemoveSpaceBeforeFirstWord] =
     React.useState(false);
   const [removeSpecificCharacters, setRemoveSpecificCharacters] =
@@ -66,6 +67,29 @@ export default function ClipFormatterComponent({
       formattedText = formattedText.replace(/\n/g, "");
     }
 
+    if (indentToShortest) {
+      const lines = formattedText.split("\n");
+
+      // Find the line with the smallest number of spaces and tabs
+      let minIndent = Infinity;
+      for (const line of lines) {
+        const indent = line.search(/\S/);
+        if (indent !== -1 && indent < minIndent) {
+          minIndent = indent;
+        }
+      }
+
+      // Remove the found amount of indentation from all lines
+      formattedText = lines
+        .map((line) => {
+          if (line.length >= minIndent) {
+            return line.substring(minIndent);
+          }
+          return line;
+        })
+        .join("\n");
+    }
+
     if (removeSpacesBeforeFirstWord) {
       formattedText = formattedText.replace(/^[ ]+/gm, "");
     }
@@ -104,6 +128,7 @@ export default function ClipFormatterComponent({
     removeSpecificWords,
     removeSpecificWordsList,
     removeSpecificWordsPartial,
+    indentToShortest,
   ]);
 
   const initialInput = `
@@ -157,6 +182,19 @@ export default function ClipFormatterComponent({
               }}
             />
             <span className="pl-2">Remove new lines</span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              className="border-gray-300 rounded h-4 w-4"
+              onChange={(e) => {
+                setIndentToShortest(e.target.checked);
+              }}
+            />
+            <span className="pl-2">
+              Indent to shortest line (Remove extra tabs and spaces from code)
+            </span>
           </label>
           <label>
             <input
