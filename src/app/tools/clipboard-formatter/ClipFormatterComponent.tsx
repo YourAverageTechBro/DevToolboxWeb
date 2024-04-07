@@ -19,32 +19,6 @@ export default function ClipFormatterComponent({
   const [originalText, setOriginalText] = React.useState("");
   const [formattedText, setFormattedText] = React.useState("");
 
-  const optionList = [
-    {
-      name: "Remove tabs",
-      value: "removeTabs",
-    },
-    {
-      name: "Remove spaces",
-      value: "removeSpaces",
-    },
-    {
-      name: "Remove new lines",
-      value: "removeNewLines",
-    },
-    {
-      name: "Remove spaces before first word in a line",
-      value: "removeSpacesBeforeFirstWord",
-    },
-    {
-      name: "Remove specific characters",
-      value: "removeSpecificCharacters",
-    },
-    {
-      name: "Remove specific words",
-      value: "removeSpecificWords",
-    },
-  ];
   const [removeSpaces, setRemoveSpaces] = React.useState(false);
   const [removeTabs, setRemoveTabs] = React.useState(false);
   const [removeNewLines, setRemoveNewLines] = React.useState(false);
@@ -104,11 +78,6 @@ export default function ClipFormatterComponent({
     }
 
     if (removeSpecificWords && removeSpecificWordsList.length > 0) {
-      // formattedText = formattedText.replace(
-      //   new RegExp(`\\b(${removeSpecificWordsList.join("|")})\\b`, "g"),
-      //   ""
-      // );
-
       if (removeSpecificWordsPartial) {
         // matches removeSpecificWordsList even if it is a part of a word
         formattedText = formattedText.replace(
@@ -137,12 +106,19 @@ export default function ClipFormatterComponent({
     removeSpecificWordsPartial,
   ]);
 
+  const initialInput = `
+            Hello world (spaces)
+\t\t\thello World tabbed
+            hello! wolrds @#$ 123
+            hello hell help hello
+`;
+
   return (
     <>
       <div className="w-full h-full flex flex-col gap-4">
         <div className="flex gap-4 h-1/2">
           <TextArea
-            initialInput="hello world"
+            initialInput={initialInput}
             title="Original:"
             onInputChange={(input) => setOriginalText(input)}
           />
@@ -150,49 +126,6 @@ export default function ClipFormatterComponent({
           <ReadOnlyTextArea value={formattedText} />
         </div>
 
-        {/* <div className="flex gap-4 flex-col mt-10">
-          <p className="text-lg font-bold">Options:</p>
-          {optionList.map((option) => (
-            <label key={option.value}>
-              <input
-                type="checkbox"
-                onChange={(e) => {
-                  if (option.value === "removeTabs") {
-                    setRemoveTabs(e.target.checked);
-                  } else if (option.value === "removeSpaces") {
-                    setRemoveSpaces(e.target.checked);
-                  } else if (option.value === "removeNewLines") {
-                    setRemoveNewLines(e.target.checked);
-                  } else if (option.value === "removeSpacesBeforeFirstWord") {
-                    setRemoveSpaceBeforeFirstWord(e.target.checked);
-                  }
-                }}
-              />
-              <span className="pl-2">
-                {option.name}{" "}
-                {option.value === "removeSpecificCharacters" && (
-                  <>
-                    <span> (Seperate by spaces)</span>
-
-                    <input
-                      className="px-4 py-2 ml-4 rounded-lg border-0
-                    bg-gray-700 text-white shadow-sm ring-1 ring-inset
-                    ring-gray-300 focus:ring-2 focus:ring-inset
-                    focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      type="text"
-                      placeholder="Characters to remove"
-                      onChange={(e) => {
-                        setRemoveSpecificCharacters(e.target.value);
-                      }}
-                    />
-                  </>
-                )}
-              </span>
-            </label>
-          ))}
-        </div> */}
-
-        {/* make a non-looping component for the checkboxes */}
         <div className="flex gap-4 flex-col mt-10">
           <p className="text-lg font-bold">Options:</p>
           <label>
@@ -269,7 +202,7 @@ export default function ClipFormatterComponent({
               }}
             />
             <span className="pl-2">
-              Remove specific words (Comma seperated, except space)
+              Remove specific words (Comma seperated)
             </span>
             <div className="flex flex-row items-center">
               <input
