@@ -137,9 +137,9 @@ export default function ClipFormatterComponent({
             hello! wolrds @#$ 123
             hello hell help hello
 
-        if(1+1===2){
-            console.log("hello")
-        }
+          if(1+1 === 2){
+              console.log("hello")
+          }
 `;
 
   return (
@@ -197,7 +197,7 @@ export default function ClipFormatterComponent({
               }}
             />
             <span className="pl-2">
-              Indent to shortest line (Code formatting)
+              Indent to left-most line (Code formatting)
             </span>
           </label>
           <label>
