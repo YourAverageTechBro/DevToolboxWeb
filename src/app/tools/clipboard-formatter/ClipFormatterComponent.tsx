@@ -131,6 +131,7 @@ export default function ClipFormatterComponent({
           <label>
             <input
               type="checkbox"
+              className="border-gray-300 rounded h-4 w-4"
               onChange={(e) => {
                 setRemoveTabs(e.target.checked);
               }}
@@ -140,6 +141,7 @@ export default function ClipFormatterComponent({
           <label>
             <input
               type="checkbox"
+              className="border-gray-300 rounded h-4 w-4"
               onChange={(e) => {
                 setRemoveSpaces(e.target.checked);
               }}
@@ -149,6 +151,7 @@ export default function ClipFormatterComponent({
           <label>
             <input
               type="checkbox"
+              className="border-gray-300 rounded h-4 w-4"
               onChange={(e) => {
                 setRemoveNewLines(e.target.checked);
               }}
@@ -158,6 +161,7 @@ export default function ClipFormatterComponent({
           <label>
             <input
               type="checkbox"
+              className="border-gray-300 rounded h-4 w-4"
               onChange={(e) => {
                 setRemoveSpaceBeforeFirstWord(e.target.checked);
               }}
@@ -169,6 +173,7 @@ export default function ClipFormatterComponent({
           <label>
             <input
               type="checkbox"
+              className="border-gray-300 rounded h-4 w-4"
               checked={removeSpecificCharacters}
               onChange={(e) => {
                 setRemoveSpecificCharacters(e.target.checked);
@@ -197,6 +202,7 @@ export default function ClipFormatterComponent({
             <input
               type="checkbox"
               checked={removeSpecificWords}
+              className="border-gray-300 rounded h-4 w-4"
               onChange={(e) => {
                 setRemoveSpecificWords(e.target.checked);
               }}
@@ -222,9 +228,12 @@ export default function ClipFormatterComponent({
 
               <input
                 type="checkbox"
-                className="ml-4 mt-4"
+                className="border-gray-300 rounded h-4 w-4 ml-4 mt-4"
                 onChange={(e) => {
                   setRemoveSpecificWordsPartial(e.target.checked);
+                  if (e.target.checked) {
+                    setRemoveSpecificWords(true);
+                  }
                 }}
               />
               <span className="ml-4 mt-4">Partial match</span>
