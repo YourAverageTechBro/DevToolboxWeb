@@ -21,6 +21,10 @@ export const toolList: ToolOption[] = [
     path: "/tools/json-validator",
   },
   {
+    name: "Clipboard Formatter",
+    path: "/tools/clipboard-formatter",
+  },
+  {
     name: "String Converter",
     path: "/tools/string-converter",
   },
@@ -129,21 +133,23 @@ export default function ToolList() {
           Star Us On Github
         </div>
       </Link>
-      {toolList.sort((a,b) => {
-        if (a.name < b.name) return -1;
-        else if (a.name > b.name) return 1;
-        return 0;
-      }).map((toolOption) => (
-        <Link
-          className={`w-full border-b py-3 px-4 hover:bg-gray-600 ${
-            pathname === toolOption.path && "bg-gray-500"
-          }`}
-          key={toolOption.name}
-          href={toolOption.path}
-        >
-          <p> {toolOption.name}</p>
-        </Link>
-      ))}
+      {toolList
+        .sort((a, b) => {
+          if (a.name < b.name) return -1;
+          else if (a.name > b.name) return 1;
+          return 0;
+        })
+        .map((toolOption) => (
+          <Link
+            className={`w-full border-b py-3 px-4 hover:bg-gray-600 ${
+              pathname === toolOption.path && "bg-gray-500"
+            }`}
+            key={toolOption.name}
+            href={toolOption.path}
+          >
+            <p> {toolOption.name}</p>
+          </Link>
+        ))}
     </div>
   );
 }
