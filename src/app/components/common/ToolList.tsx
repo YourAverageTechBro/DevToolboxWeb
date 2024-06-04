@@ -124,12 +124,12 @@ export default function ToolList() {
         </div>
       </SignedOut>
       <Link
-        className={`w-full border-y py-3 px-4 hover:bg-gray-600`}
+        className={`w-full border-y py-3 px-4 bg-indigo-500 hover:bg-indigo-400`}
         href={`https://github.com/YourAverageTechBro/DevToolboxWeb`}
         target="_blank"
       >
-        <div className={"flex items-center gap-2 "}>
-          <StarIcon className={"w-6 h-6"} />
+        <div className={"flex items-center gap-2 text-white"}>
+          <StarIcon className={"w-6 h-6 text-white"} />
           Star Us On Github
         </div>
       </Link>
@@ -141,7 +141,7 @@ export default function ToolList() {
         })
         .map((toolOption) => (
           <Link
-            className={`w-full border-b py-3 px-4 hover:bg-gray-600 ${
+            className={`w-full border-b py-3 px-4 text-white hover:bg-gray-600 ${
               pathname === toolOption.path && "bg-gray-500"
             }`}
             key={toolOption.name}
