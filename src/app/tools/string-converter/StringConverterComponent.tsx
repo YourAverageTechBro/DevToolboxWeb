@@ -23,7 +23,7 @@ const convertToCamelCase = (input: string): string =>
 
 const convertToKebabCase = (input: string): string =>
   input
-    .replace(/\s+/g, "-")
+    .replace(/[\s_-]/g, "-")
     .replace(/([a-z])([A-Z])/g, "$1-$2")
     .toLowerCase();
 
