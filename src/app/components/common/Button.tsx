@@ -3,7 +3,7 @@ import { ComponentProps } from "react";
 import Link from "next/link";
 
 const buttonStyles = cva(
-  "flex items-center justify-center px-4 py-2 rounded-full font-medium focus:outline-none focus:ring-2 focus:ring-offset-white dark:focus:ring-offset-black focus:ring-offset-1 disabled:opacity-60 disabled:pointer-events-none hover:bg-opacity-80",
+  "flex items-center justify-center px-4 py-2 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-white dark:focus:ring-offset-black focus:ring-offset-1 disabled:opacity-60 disabled:pointer-events-none hover:bg-opacity-80",
   {
     variants: {
       intent: {
