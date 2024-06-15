@@ -61,6 +61,10 @@ export const toolList: ToolOption[] = [
     path: "/tools/color-converter",
   },
   {
+    name: "Color Palette Generator",
+    path: "/tools/color-palette-generator",
+  },
+  {
     name: "Hash Generator",
     path: "/tools/hash-generator",
   },
